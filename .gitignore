@@ -23,6 +23,6 @@ now.json
 !.yarn/versions
 
 compiled/
-production-server/
+dist/
 
 yarn-error.log

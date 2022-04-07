@@ -10,14 +10,14 @@
     "dev": "nodemon src/server.ts",
     "lint": "eslint . --ext .ts,.tsx",
     "test": "jest",
-    "postinstall": "rm -rf production-server/",
+    "postinstall": "rm -rf dist/",
     "build": "tsc --project tsconfig.server.json",
-    "start": "node production-server/server.js"
+    "start": "node dist/server.js"
   },
   "jest": {
     "preset": "ts-jest",
     "testPathIgnorePatterns": [
-      "production-server"
+      "dist"
     ],
     "testEnvironment": "node"
   },
