@@ -1,7 +1,5 @@
 import * as mongoose from "mongoose";
 
-mongoose.set("useFindAndModify", false);
-
 const verificationCodeSchema = new mongoose.Schema({
   phone: {
     type: String,
