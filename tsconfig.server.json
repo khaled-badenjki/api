@@ -4,6 +4,6 @@
     "module": "commonjs",
     "outDir": "production-server/"
   },
-  "include": ["./server/**/*.ts"],
-  "exclude": ["./server/**/*.test.ts"]
+  "include": ["./src/**/*.ts"],
+  "exclude": ["./src/**/*.test.ts"]
 }

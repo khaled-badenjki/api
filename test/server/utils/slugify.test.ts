@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
-import User from '../../../server/models/User';
-import { generateSlug } from '../../../server/utils/slugify';
+import User from '../../../src/models/User';
+import { generateSlug } from '../../../src/utils/slugify';
 
 // eslint-disable-next-line
 require('dotenv').config();
