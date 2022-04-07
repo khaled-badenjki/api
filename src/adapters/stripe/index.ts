@@ -2,10 +2,10 @@ import * as dotenv from 'dotenv';
 import * as express from 'express';
 import Stripe from 'stripe';
 
-import Team from './models/Team';
-import User from './models/User';
+import Team from '@models/Team';
+import User from '@models/User';
 
-import logger from './logger';
+import logger from '@utils/logger';
 
 dotenv.config();
 

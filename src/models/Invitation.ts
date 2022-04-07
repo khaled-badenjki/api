@@ -1,11 +1,9 @@
 import * as mongoose from 'mongoose';
 
-import sendEmail from '../aws-ses';
-import getEmailTemplate from './EmailTemplate';
-import Team from './Team';
-import User, { UserDocument } from './User';
-
-mongoose.set('useFindAndModify', false);
+import sendEmail from '@adapters/aws/aws-ses';
+import getEmailTemplate from '@models/EmailTemplate';
+import Team from '@models/Team';
+import User, { UserDocument } from '@models/User';
 
 const mongoSchema = new mongoose.Schema({
   teamId: {

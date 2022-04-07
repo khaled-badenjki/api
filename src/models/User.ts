@@ -2,13 +2,13 @@ import * as _ from 'lodash';
 import * as mongoose from 'mongoose';
 import Stripe from 'stripe';
 
-import sendEmail from '../aws-ses';
-import { addToMailchimp } from '../mailchimp';
-import { generateSlug } from '../utils/slugify';
-import getEmailTemplate from './EmailTemplate';
+import sendEmail from '@adapters/aws/aws-ses';
+import { addToMailchimp } from '@adapters/mailchimp';
+import { generateSlug } from '@utils/slugify';
+import getEmailTemplate from '@models/EmailTemplate';
 import Team, { TeamDocument } from './Team';
 
-import { getListOfInvoices } from '../stripe';
+import { getListOfInvoices } from '@adapters/stripe';
 
 const mongoSchema = new mongoose.Schema({
   slug: {

@@ -1,9 +1,9 @@
 import * as express from 'express';
 
-import publicExpressRoutes from './public';
-import teamMemberExpressRoutes from './team-member';
-import teamLeaderApi from './team-leader';
-import authExpressRoutes from './auth';
+import publicExpressRoutes from '@controllers/public';
+import teamMemberExpressRoutes from '@controllers/team-member';
+import teamLeaderApi from '@controllers/team-leader';
+import authExpressRoutes from '@controllers/auth';
 
 function handleError(err, _, res, __) {
   console.error(err.stack);
@@ -11,7 +11,7 @@ function handleError(err, _, res, __) {
   res.json({ error: err.message || err.toString() });
 }
 
-export default function api(server: express.Express) {
+export default function controllers(server: express.Express) {
   server.use('/api/v1/public', publicExpressRoutes, handleError);
   server.use('/api/v1/team-member', teamMemberExpressRoutes, handleError);
   server.use('/api/v1/team-leader', teamLeaderApi, handleError);

@@ -1,8 +1,8 @@
 import * as passport from 'passport';
 import { OAuth2Strategy as Strategy } from 'passport-google-oauth';
 
-import User, { UserDocument } from './models/User';
-import Invitation from './models/Invitation';
+import User, { UserDocument } from '@models/User';
+import Invitation from '@models/Invitation';
 
 const dev = process.env.NODE_ENV !== 'production';
 

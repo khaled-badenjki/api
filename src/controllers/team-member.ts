@@ -1,12 +1,12 @@
 import * as express from 'express';
 
-import { signRequestForUpload } from '../aws-s3';
+import { signRequestForUpload } from '@adapters/aws/aws-s3';
 
-import User from '../models/User';
-import Team from '../models/Team';
-import Invitation from '../models/Invitation';
-import Discussion from '../models/Discussion';
-import Post from '../models/Post';
+import User from '@models/User';
+import Team from '@models/Team';
+import Invitation from '@models/Invitation';
+import Discussion from '@models/Discussion';
+import Post from '@models/Post';
 
 import {
   discussionAdded,
@@ -15,7 +15,7 @@ import {
   postAdded,
   postDeleted,
   postEdited,
-} from '../sockets';
+} from '@utils/sockets';
 
 const router = express.Router();
 

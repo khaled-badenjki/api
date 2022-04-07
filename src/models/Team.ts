@@ -1,11 +1,9 @@
 import * as mongoose from 'mongoose';
 import Stripe from 'stripe';
 
-import { cancelSubscription } from '../stripe';
-import { generateRandomSlug } from '../utils/slugify';
+import { cancelSubscription } from '@adapters/stripe';
+import { generateRandomSlug } from '@utils/slugify';
 import User from './User';
-
-mongoose.set('useFindAndModify', false);
 
 const mongoSchema = new mongoose.Schema({
   name: {
@@ -203,7 +201,6 @@ class TeamClass extends mongoose.Model {
       throw new Error('Permission denied');
     }
 
-    // @ts-expect-error probably problem with @types/mongoose, works with $set but not $pull
     await this.findByIdAndUpdate(teamId, { $pull: { memberIds: userId } });
   }
 

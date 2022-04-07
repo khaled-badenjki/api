@@ -1,9 +1,9 @@
 import * as express from 'express';
 
-import Invitation from '../models/Invitation';
-import Team from '../models/Team';
-import User from '../models/User';
-import { createSession } from '../stripe';
+import Invitation from '@models/Invitation';
+import Team from '@models/Team';
+import User from '@models/User';
+import { createSession } from '@adapters/stripe';
 
 const router = express.Router();
 

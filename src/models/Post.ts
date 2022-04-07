@@ -4,10 +4,8 @@ import * as he from 'he';
 import * as hljs from 'highlight.js';
 import * as marked from 'marked';
 
-import Discussion from './Discussion';
-import Team from './Team';
-
-mongoose.set('useFindAndModify', false);
+import Discussion from '@models/Discussion';
+import Team from '@models/Team';
 
 const mongoSchema = new mongoose.Schema({
   createdUserId: {

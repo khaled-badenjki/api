@@ -1,7 +1,7 @@
 import * as express from "express";
-import VerificationCode from "../models/VerificationCode";
+import VerificationCode from "@models/VerificationCode";
 
-import sendSms from "../sms";
+import sendSms from "@adapters/sms/console";
 
 const router = express.Router();
 

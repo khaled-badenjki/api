@@ -5,13 +5,13 @@ import * as session from 'express-session';
 import * as httpModule from 'http';
 import * as mongoose from 'mongoose';
 
-import api from './api';
-import { setupGoogle } from './google-auth';
-import { setupPasswordless } from './passwordless-auth';
-import { setupSockets } from './sockets';
-import { stripeWebhookAndCheckoutCallback } from './stripe';
+import controllers from '@controllers/index';
+import { setupGoogle } from '@adapters/google-auth';
+import { setupPasswordless } from '@src/config/passwordless/passwordless-auth';
+import { setupSockets } from '@utils/sockets';
+import { stripeWebhookAndCheckoutCallback } from '@adapters/stripe';
 
-import logger from './logger';
+import logger from './utils/logger';
 
 import * as compression from 'compression';
 import * as helmet from 'helmet';
@@ -22,14 +22,7 @@ require('dotenv').config();
 const dev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 8000;
 
-const options = {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true,
-};
-
-mongoose.connect(dev ? process.env.MONGO_URL_TEST : process.env.MONGO_URL, options);
+mongoose.connect(dev ? process.env.MONGO_URL_TEST : process.env.MONGO_URL);
 
 const server = express();
 
@@ -79,7 +72,7 @@ server.use(sessionMiddleware);
 setupGoogle({ server });
 setupPasswordless({ server });
 
-api(server);
+controllers(server);
 
 const httpServer = httpModule.createServer(server);
 setupSockets({

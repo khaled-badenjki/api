@@ -3,7 +3,7 @@ import * as mongoose from 'mongoose';
 import * as TokenStore from 'passwordless-tokenstore';
 import * as util from 'util';
 
-import User from './models/User';
+import User from '@models/User';
 
 interface TokenDocument extends mongoose.Document {
   hashedToken: string;
@@ -138,7 +138,7 @@ MongoStore.prototype.storeOrUpdateByEmail = async function addEmail(email: strin
     return obj.uid;
   }
 
-  const uid = mongoose.Types.ObjectId().toHexString();
+  const uid = new mongoose.Types.ObjectId().toHexString();
   await PasswordlessToken.updateOne({ uid }, { email }, { upsert: true });
 
   return uid;

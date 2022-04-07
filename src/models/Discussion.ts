@@ -1,11 +1,9 @@
 import { uniq } from 'lodash';
 import * as mongoose from 'mongoose';
 
-import { generateRandomSlug } from '../utils/slugify';
-import Team, { TeamDocument } from './Team';
+import { generateRandomSlug } from '@utils/slugify';
+import Team, { TeamDocument } from '@models/Team';
 import Post from './Post';
-
-mongoose.set('useFindAndModify', false);
 
 const mongoSchema = new mongoose.Schema({
   createdUserId: {

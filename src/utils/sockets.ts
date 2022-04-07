@@ -3,8 +3,8 @@ import * as express from 'express';
 import { Server } from 'socket.io';
 import * as httpModule from 'http';
 
-import { DiscussionDocument } from './models/Discussion';
-import { PostDocument } from './models/Post';
+import { DiscussionDocument } from '@models/Discussion';
+import { PostDocument } from '@models/Post';
 
 let io: Server = null;
 

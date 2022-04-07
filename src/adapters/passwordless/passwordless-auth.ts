@@ -1,10 +1,10 @@
 import * as passwordless from 'passwordless';
 
-import sendEmail from './aws-ses';
-import getEmailTemplate from './models/EmailTemplate';
-import User from './models/User';
-import PasswordlessMongoStore from './passwordless-token-mongostore';
-import Invitation from './models/Invitation';
+import sendEmail from '@adapters/aws/aws-ses';
+import getEmailTemplate from '@models/EmailTemplate';
+import User from '@models/User';
+import PasswordlessMongoStore from '@config/passwordless/passwordless-token-mongostore';
+import Invitation from '@models/Invitation';
 
 function setupPasswordless({ server }) {
   const mongoStore = new PasswordlessMongoStore();
