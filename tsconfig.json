@@ -1,6 +1,12 @@
 {
   "compileOnSave": false,
+  "ts-node": {
+    "require": [
+      "tsconfig-paths/register"
+    ]
+  },
   "compilerOptions": {
+    "module": "commonjs",
     "jsx": "preserve",
     "allowJs": true,
     "alwaysStrict": true,
@@ -12,17 +18,17 @@
     "noUnusedParameters": true,
     "sourceMap": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
+    "baseUrl": "src",
+    "outDir": "dist/",
     "experimentalDecorators": true,
     "typeRoots": ["./node_modules/@types"],
     "lib": ["es2015", "es2016"],
     "paths": {
-      "@src/*": ["src/*"],
-      "@adapters/*": ["src/adapters/*"],
-      "@controllers/*": ["src/controllers/*"],
-      "@models/*": ["src/models/*"],
-      "@utils/*": ["src/utils/*"],
-      "@config/*": ["src/config/*"],
+      "@adapters/*": ["adapters/*"],
+      "@controllers/*": ["controllers/*"],
+      "@models/*": ["models/*"],
+      "@utils/*": ["utils/*"],
+      "@config/*": ["config/*"],
     }
   },
   "exclude": ["dist", "node_modules"]

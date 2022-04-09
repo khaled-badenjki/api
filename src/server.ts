@@ -7,7 +7,7 @@ import * as mongoose from 'mongoose';
 
 import controllers from '@controllers/index';
 import { setupGoogle } from '@adapters/google-auth';
-import { setupPasswordless } from '@src/config/passwordless/passwordless-auth';
+import { setupPasswordless } from '@config/passwordless/passwordless-auth';
 import { setupSockets } from '@utils/sockets';
 import { stripeWebhookAndCheckoutCallback } from '@adapters/stripe';
 
