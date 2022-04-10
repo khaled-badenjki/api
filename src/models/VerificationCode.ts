@@ -33,6 +33,7 @@ export interface VerificationCodeDocument extends mongoose.Document {
 
 interface VerificationCodeModel extends mongoose.Model<VerificationCodeDocument> {
   add({ phone }: { phone: string }): Promise<VerificationCodeDocument>;
+  verify({ phone, code }: { phone: string, code: string }): Promise<VerificationCodeDocument>;
 }
 
 class VerificationCodeClass extends mongoose.Model {
@@ -43,6 +44,18 @@ class VerificationCodeClass extends mongoose.Model {
       createdAt: new Date(),
       expiresAt: new Date(new Date().getTime() + 1000 * 60 * 5)
     });
+    return await verificationCode.save();
+  }
+
+  public static async verify({ phone, code }: { phone: string, code: string }): Promise<VerificationCodeDocument> {
+    const verificationCode = await this.findOne({ phone, code, isActivated: false });
+    if (!verificationCode) {
+      throw new Error("Verification code is not found");
+    }
+    if (verificationCode.expiresAt < new Date()) {
+      throw new Error("Verification code is expired");
+    }
+    verificationCode.isActivated = true;
     return await verificationCode.save();
   }
 }

@@ -26,3 +26,6 @@ compiled/
 dist/
 
 yarn-error.log
+
+// test coverage report
+coverage
