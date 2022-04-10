@@ -1,5 +1,10 @@
 import * as mongoose from "mongoose";
 
+// eslint-disable-next-line
+require('dotenv').config();
+
+const verificationCodeExpirySeconds = parseInt(process.env.VERIFICATION_CODE_EXPIRY_SECONDS) || 300;
+
 const verificationCodeSchema = new mongoose.Schema({
   phone: {
     type: String,
@@ -42,7 +47,7 @@ class VerificationCodeClass extends mongoose.Model {
       phone,
       code: Math.floor(Math.random() * 1000000),
       createdAt: new Date(),
-      expiresAt: new Date(new Date().getTime() + 1000 * 60 * 5)
+      expiresAt: new Date(new Date().getTime() + 1000 * verificationCodeExpirySeconds)
     });
     return await verificationCode.save();
   }
