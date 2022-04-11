@@ -12,7 +12,7 @@ describe('Verification code model', () => {
   it('generate verification code by phone number', async () => {
 
     const phoneNumber = '+84988888888';
-    const code = await VerificationCode.add({phone: phoneNumber});
+    const code = await VerificationCode.add({ phone: phoneNumber });
 
     expect(code).to.exist;
     expect(code.phone).to.be.equal(phoneNumber);
@@ -23,12 +23,12 @@ describe('Verification code model', () => {
     process.env.VERIFICATION_CODE_EXPIRY_SECONDS = '0';
 
     const phoneNumber = '+84988888888';
-    const code = await VerificationCode.add({phone: phoneNumber});
+    const code = await VerificationCode.add({ phone: phoneNumber });
 
     expect(code).to.exist;
     expect(code.isActivated).to.be.false;
 
-    const verifiedCode = await VerificationCode.verify({phone: phoneNumber, code: code.code});
+    const verifiedCode = await VerificationCode.verify({ phone: phoneNumber, code: code.code });
     expect(verifiedCode).to.exist;
     expect(verifiedCode.isActivated).to.be.true;
   })

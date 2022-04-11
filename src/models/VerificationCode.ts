@@ -68,7 +68,7 @@ class VerificationCodeClass extends mongoose.Model {
 verificationCodeSchema.loadClass(VerificationCodeClass);
 
 const VerificationCode = mongoose.model<VerificationCodeDocument, VerificationCodeModel>(
-  "VerificationCode", verificationCodeSchema
+  "VerificationCode", verificationCodeSchema, 'verification-code'
 );
 
 export default VerificationCode;
