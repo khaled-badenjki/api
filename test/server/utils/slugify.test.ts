@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+const expect = require('chai').expect;
 import User from '@models/User';
 import { generateSlug } from '@utils/slugify';
 
@@ -6,7 +7,7 @@ import { generateSlug } from '@utils/slugify';
 require('dotenv').config();
 
 describe('slugify', () => {
-  beforeAll(async () => {
+  beforeEach(async () => {
     await mongoose.connect(process.env.MONGO_URL_TEST);
 
     const mockUsers = [
@@ -36,25 +37,19 @@ describe('slugify', () => {
     await User.insertMany(mockUsers);
   });
 
-  test('not duplicated', async () => {
-    expect.assertions(1);
-
-    await expect(generateSlug(User, 'John J Johnson@#$')).resolves.toEqual('john-j-johnson');
+  it('not duplicated', async () => {
+    expect(await generateSlug(User, 'John J Johnson@#$')).to.be.equal('john-j-johnson');
   });
 
-  test('one time duplicated', async () => {
-    expect.assertions(1);
-
-    await expect(generateSlug(User, ' John@#$')).resolves.toEqual('john-1');
+  it('one time duplicated', async () => {
+    expect(await generateSlug(User, ' John@#$')).to.be.equal('john-1');
   });
 
-  test('multiple duplicated', async () => {
-    expect.assertions(1);
-
-    await expect(generateSlug(User, 'John & Johnson@#$')).resolves.toEqual('john-johnson-2');
+  it('multiple duplicated', async () => {
+    expect(await generateSlug(User, 'John & Johnson@#$')).to.be.equal('john-johnson-2');
   });
 
-  afterAll(async () => {
+  afterEach(async () => {
     await User.deleteMany({ slug: { $in: ['john', 'john-johnson', 'john-johnson-1'] } });
     await mongoose.disconnect();
   });
