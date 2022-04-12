@@ -47,7 +47,7 @@ describe('Verification code model', () => {
     }, parseInt(process.env.VERIFICATION_CODE_EXPIRY_SECONDS));
   })
 
-  it.only('should fail if verification code does not match phone number', async () => {
+  it('should fail if verification code does not match phone number', async () => {
     const phoneNumber = '+84988888888';
     const code = await VerificationCode.add({ phone: phoneNumber });
 

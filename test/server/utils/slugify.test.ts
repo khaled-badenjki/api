@@ -7,7 +7,7 @@ import { generateSlug } from '@utils/slugify';
 require('dotenv-flow').config();
 
 describe('slugify', () => {
-  beforeEach(async () => {
+  before(async () => {
     await mongoose.connect(process.env.MONGO_URL);
 
     const mockUsers = [
@@ -49,7 +49,7 @@ describe('slugify', () => {
     expect(await generateSlug(User, 'John & Johnson@#$')).to.be.equal('john-johnson-2');
   });
 
-  afterEach(async () => {
+  after(async () => {
     await User.deleteMany({ slug: { $in: ['john', 'john-johnson', 'john-johnson-1'] } });
     await mongoose.disconnect();
   });
