@@ -17,12 +17,12 @@ import * as compression from 'compression';
 import * as helmet from 'helmet';
 
 // eslint-disable-next-line
-require('dotenv').config();
+require('dotenv-flow').config();
 
 const dev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 8000;
 
-mongoose.connect(dev ? process.env.MONGO_URL_TEST : process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URL);
 
 const server = express();
 

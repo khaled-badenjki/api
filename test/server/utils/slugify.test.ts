@@ -4,11 +4,11 @@ import User from '@models/User';
 import { generateSlug } from '@utils/slugify';
 
 // eslint-disable-next-line
-require('dotenv').config();
+require('dotenv-flow').config();
 
 describe('slugify', () => {
   beforeEach(async () => {
-    await mongoose.connect(process.env.MONGO_URL_TEST);
+    await mongoose.connect(process.env.MONGO_URL);
 
     const mockUsers = [
       {

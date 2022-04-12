@@ -1,9 +1,9 @@
 import * as mongoose from "mongoose";
 
 // eslint-disable-next-line
-require('dotenv').config();
+require('dotenv-flow').config();
 
-const verificationCodeExpirySeconds = parseInt(process.env.VERIFICATION_CODE_EXPIRY_SECONDS) || 300;
+const verificationCodeExpirySeconds = parseInt(process.env.VERIFICATION_CODE_EXPIRY_SECONDS) || 3000;
 
 const verificationCodeSchema = new mongoose.Schema({
   phone: {
